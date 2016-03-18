@@ -1,0 +1,10 @@
+# OSX Files
+.DS_Store
+
+# Node Files
+node_modules
+bower_components
+.sass-cache
+
+# Web distribution
+dist

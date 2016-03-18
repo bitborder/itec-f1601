@@ -1,0 +1,19 @@
+{
+  "name": "macintoshplus",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "Damian Kissling <damian.kissling@bluewin.ch>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
