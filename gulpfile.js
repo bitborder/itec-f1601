@@ -5,7 +5,8 @@ var gulp = require('gulp'),
     cssmin = require('gulp-cssmin'),
     uncss = require('gulp-uncss'),
     copy = require('gulp-copy'),
-    watch = require('gulp-watch');
+    watch = require('gulp-watch'),
+    scp = require('gulp-scp');
 
 // Styles Task
 // Compiles less files
@@ -59,8 +60,14 @@ gulp.task('production', ['default'], function(){
 // Deploy Task
 // Put dist/prod/ to server
 gulp.task('deploy', function(){
-    //TODO
     //Deploy to server with ssh-keys
+    gulp.src('dist/devel/*')
+    .pipe(scp({
+        host: 'damian2.myhostpoint.ch',
+        user: 'damian2',
+        path: '~/www/macplus/'
+
+    }));
 });
 
 gulp.task('default', ['html', 'styles']);
