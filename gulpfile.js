@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     uncss = require('gulp-uncss'),
     copy = require('gulp-copy'),
     watch = require('gulp-watch'),
-    run = require('gulp-run');
+    run = require('gulp-run'),
+    uglify = require('gulp-uglify');
 
 // Styles Task
 // Compiles less files
@@ -39,6 +40,7 @@ gulp.task('js', function() {
     gulp.src('bower_components/jquery/dist/jquery.min.js')
     .pipe(gulp.dest('dist/devel/js/'));
     gulp.src('src/js/*.js')
+    .pipe(uglify())
     .pipe(gulp.dest('dist/devel/js/'));
 })
 
