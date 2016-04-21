@@ -27,7 +27,7 @@ gulp.task('styles', function() {
 // HTML task
 // Copies html files to dist dir
 gulp.task('html', function() {
-    gulp.src('src/index.html')
+    gulp.src('src/*.html')
     .pipe(gulp.dest('dist/devel/'));
 });
 
