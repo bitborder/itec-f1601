@@ -81,7 +81,7 @@ jQuery("document").ready(function($){
     }
 
     w = a.width = window.innerWidth;
-      h = a.height = window.innerHeight;
+    h = a.height = window.innerHeight;
 
     for(var i = 0; i < particleNum; i++) {
       particles.push(new Particle(i));
