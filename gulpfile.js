@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     uncss = require('gulp-uncss'),
     copy = require('gulp-copy'),
     watch = require('gulp-watch'),
-    scp = require('gulp-scp');
+    run = require('gulp-run');
 
 // Styles Task
 // Compiles less files
@@ -17,10 +17,10 @@ gulp.task('styles', function() {
       sass: 'src/sass',
       image: 'src/images'
     }))
-    .pipe(uncss({
-        html: ['src/index.html', 'src/**/*.html'],
-        //ignore: ["js"]
-    }))
+    // .pipe(uncss({
+    //     html: ['src/index.html', 'src/**/*.html'],
+    //     //ignore: ["js"]
+    // }))
     .pipe(gulp.dest('dist/devel/css/'));
 });
 
@@ -61,13 +61,7 @@ gulp.task('production', ['default'], function(){
 // Put dist/prod/ to server
 gulp.task('deploy', function(){
     //Deploy to server with ssh-keys
-    gulp.src('dist/devel/*')
-    .pipe(scp({
-        host: 'damian2.myhostpoint.ch',
-        user: 'damian2',
-        path: '~/www/macplus/'
-
-    }));
+    run('scp -r dist/devel/* damian:~/www/macplus/').exec();
 });
 
 gulp.task('default', ['html', 'styles']);
