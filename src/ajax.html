@@ -24,15 +24,31 @@
     </header>
     <div class="row"> 
       <section class="twelve colomns">
-        <h2>Why AJAX</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis laborum fugit maxime iusto nesciunt blanditiis perferendis placeat quaerat odio, numquam, expedita atque molestias, temporibus, quas praesentium autem. Quo, beatae, eveniet!</p>
-        
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae reprehenderit magni sapiente autem maxime velit sint, necessitatibus quidem laborum dicta pariatur corrupti cum ut aliquid nisi ipsam vitae cumque alias.</p>
-        <h3>() { :; } ; // Have fun!</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam neque debitis quas sit atque ad magni eveniet nulla obcaecati necessitatibus! Numquam minus quidem animi ut perferendis illum labore accusantium illo.</p>
+        <h2>Swiss Public Transport</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio nostrum sed molestiae nemo magnam, esse numquam ut, deserunt cum accusamus itaque, repudiandae cupiditate laboriosam, doloremque totam distinctio modi mollitia consectetur.</p>
+        <a href="http://transport.opendata.ch" target="_blank">Transport Opendata</a>
+        <h3>Stationboard Example</h3>
+        <div class="ui-widget station">
+            <input class="form-control" id="station" value="Olten" placeholder="Station" />
+        </div>
+        <div class="media">
+        </div>
 
-        <img src="img/mac-plus.svg" width="500px" alt="">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate quia laudantium odit, ipsa alias ex, porro impedit at. Corrupti soluta unde fugit, mollitia blanditiis quos totam, repellendus natus error modi.</p>
+        <table id="stationboard">
+            <colgroup>
+                <col width="120">
+                <col width="140">
+                <col width="230">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th align="left">Zeit</th>
+                    <th>&nbsp;</th>
+                    <th align="left">Nach</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
       </section>
       <aside>
         <h5>Useful links:</h5>
@@ -49,7 +65,38 @@
     <script src="js/vivus.min.js" type="text/javascript"></script>
 
     <!-- jQuery -->
-    <script src="//code.jquery.com/jquery.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script>
+    $(function () {
+      var station = 008500218;
+      function refresh() {
+          if (station) {
+            $.get('http://transport.opendata.ch/v1/stationboard', {id: station, limit: 15}, function(data) {
+                $('#stationboard tbody').empty();
+              $(data.stationboard).each(function () {
+                  var prognosis, departure, delay, line = '<tr><td>';
+                  departure = moment(this.stop.departure);
+                  if (this.stop.prognosis.departure) {
+                      prognosis = moment(this.stop.prognosis.departure);
+                      delay = (prognosis.valueOf() - departure.valueOf()) / 60000;
+                      line += departure.format('HH:mm') + ' <strong>+' + delay + ' min</strong>';
+                  } else {
+                      line += departure.format('HH:mm');
+                  }
+                  line += '</td><td>' + this.name + '</td><td>' + this.to + '</td></tr>';
+                  $('#stationboard tbody').append(line);
+              });
+            }, 'json');
+          }
+      }
+
+      
+       
+      setInterval(refresh, 3000);
+      refresh();
+    });
+    </script>
   </body>
 </html>
