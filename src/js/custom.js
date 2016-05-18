@@ -1,4 +1,3 @@
-jQuery("document").ready(function($){  
       //set the variables
   var a = document.getElementById('canvas'),
       c = a.getContext('2d'),
@@ -110,5 +109,8 @@ jQuery("document").ready(function($){
 
   // Vivus animation
   new Vivus('my-svg', {type: 'delayed', duration: 150} , function (obj) {obj.el.classList.add('finished')});
+
+  
  
 });
+

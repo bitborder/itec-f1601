@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+$font-family: "Open Sans";
+$font-style-italic: italic;
+$icons: entypo;
+$font-smoothing: antialiased;
+
+// Font Weights
+$font-weight-bold: 700;
+$font-weight-semibold: 600;
+$font-weight-medium: 400;
+$font-weight-regular: 400;
+$font-weight-light: 300;
+$font-weight-thin: 300;
+
+$header-font-weight: $font-weight-thin;
+$body-font-weight: $font-weight-regular;
+$type-font-weight: $font-weight-regular;
+$link-font-weight: $font-weight-regular;
+$button-font-weight: $font-weight-semibold;
+$tabs-font-weight: $font-weight-semibold;
+
+// Vertical Rhythm Spacing
+$base-line-height: 26px !default;
+$rhythm-spacing: .168;
+$rhythm-height: .711;
+
+// Modular Scale Settings
+$ms-base: 16px 78px;
+$base-font-size: ms(0);
+// Gumby Default Scale Values: 16, 18, 26, 30, 42, 48, 68, 78, 110, 126;
+
+// Sizing
+$xsmall: ms(-2);
+$small: ms(-1);
+$norm: ms(0);                 // $base-font-size (16px == default)
+$med: ms(1);
+$large: ms(2);
+$larger: ms(3);
+$xlarge: ms(4);
+$xxlarge: ms(5);
+$xxxlarge: ms(6);
+$reallybig: ms(8);
+$tremendous: ms(9);
+$absurd: ms(10);
+
+// Typography Colors
+$header-font-color: #444444 !default;
+$header-link-color: #d04526 !default;
+$header-link-hover-color: #c03d20 !default;
+$body-font-color: #555555 !default;
+$body-link-color: #d04526 !default;
+$body-link-hover-color: #c03d20 !default;
+
+// User Interface Colors
+$global-bg-color: #f000a1;
+$navbar-color: #4a4d50;
+$navbar-link-color: #fff;
+
+$primary-color: #3085d6;
+$secondary-color: #42a35a;
+$default-color: #f2f2f2;
+$info-color: #4a4d50;
+$danger-color: #ca3838;
+$warning-color: #f6b83f;
+$success-color: #58c026;
+
+$primary-hover-color: #58b2fa;
+$secondary-hover-color: #6dbb80;
+$default-hover-color: #ffffff;
+$info-hover-color: #868d92;
+$danger-hover-color: #f14f4f;
+$warning-hover-color: #fdd27f;
+$success-hover-color: #66d92f;
+
+$horizontal-rule-color: #ccc !default;
+
+$black: #000;
+$white: #fff;
+ 
+body {
+  background: $global-bg-color;
+  font-family: $font-family;
+  font-weight: $body-font-weight;
+  color: $body-font-color;
+  position: relative;
+  -webkit-font-smoothing: $font-smoothing;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,h2,h3,h4,h5,h6 {
+font-family: $font-family;
+font-weight: $header-font-weight;
+color: $header-font-color;
+text-rendering: optimizeLegibility;
+a {
+  color: $header-link-color;
+  &:hover {
+    color: $header-link-hover-color;
+  }
+}
+}

@@ -23,6 +23,14 @@ gulp.task('styles', function() {
     //     //ignore: ["js"]
     // }))
     .pipe(gulp.dest('dist/devel/css/'));
+
+    gulp.src('src/sass/invert.scss')
+    .pipe(compass({
+      css: 'dist/devel/css',
+      sass: 'src/sass',
+      image: 'src/images'
+    }))
+    .pipe(gulp.dest('dist/devel/css/'));
 });
 
 // HTML task
