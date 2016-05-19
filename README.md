@@ -1,11 +1,11 @@
 # Website for Internet Technologies
 
-This project is the testat project for the hslu
+This project is the testat project for the module Internet Tecnologies 1. All source code under MIT Licence.
 
-## Directory structure
+## Insallation
 
-root
-|- bower_components: Libraries like jQuery
-|- node_modules: gulp and gulp-plugins
-|- dist: distribution directory with development and production
-|- src: source files which are processed
+1. clone git repo
+2. Install Node.js
+3. Install all bower components
+4. Install gem for compass
+
